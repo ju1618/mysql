@@ -1,0 +1,41 @@
+g. 
+SELECT e.title as episodes, s.title as temporada, se.title as serie, g.name as genero, count(a.id) as cantidad_actores
+FROM episodes e
+INNER JOIN seasons s on (e.season_id=s.id)
+inner join series se on (s.serie_id=se.id)
+inner join genres g on (se.genre_id=g.id)
+inner join actor_episode a on (a.episode_id=e.id)
+
+GROUP BY e.title, s.title, se.title, g.name
+
+
+h.
+SELECT g.name as genero, count(m.id) as cantidad_pelis
+FROM movies m
+INNER JOIN genres g on (m.genre_id=g.id)
+
+WHERE m.rating>5
+
+i.
+SELECT g.name as genero, avg(m.rating) as promedio_rating
+FROM movies m
+INNER JOIN genres g on (m.genre_id=g.id)
+
+WHERE m.rating>5
+
+j.
+SELECT s.title as serie, count(e.title) as cantidad_ep
+FROM series s
+INNER JOIN seasons se on (se.serie_id=s.id)
+INNER JOIN episodes e on (e.season_id=se.id)
+Group BY s.title
+
+
+SUBQUERYS
+a.
+
+SELECT a.first_name
+FROM actors a
+WHERE a.favorite_movie_id in (SELECT m.id FROM movies m  WHERE title like '%t%')
+
+
