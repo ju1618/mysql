@@ -1,4 +1,5 @@
 <?php
+echo 'holis';
 require_once 'conexion.php';
 
 try {
@@ -11,7 +12,7 @@ try {
 } catch(PDOException $error) {
 	$mensaje = $error->getMessage(); //string descriptiva del error
 	$codigo = $error->getCode(); //codigo tipificado del error
-	
+
 	echo("Ocurrió un error con una consulta en la base de datos");
 	die(); //lo mismo que exit()
 }
@@ -56,4 +57,3 @@ $autores = $resultado->fetchAll(PDO::FETCH_ASSOC); //me convierte el "resultado 
 	<?php } ?>
 </body>
 </html>
-
